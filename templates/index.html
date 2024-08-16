@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fdf2f8; /* Baby pink background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        h2 {
+            color: #ff66b2; /* Baby pink color */
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ff66b2; /* Baby pink border */
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+        button {
+            background-color: #ff66b2; /* Baby pink button */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff3399; /* Darker pink on hover */
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffe6f2; /* Light pink background */
+            border: 1px solid #ff66b2; /* Baby pink border */
+            border-radius: 4px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+        }
+        #prediction {
+            font-weight: bold;
+            color: #ff66b2; /* Baby pink text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sentiment Analysis</h2>
+        <form id="sentiment-form">
+            <textarea id="statement" rows="5" placeholder="Enter your statement here..."></textarea>
+            <br>
+            <button type="submit">Analyze</button>
+        </form>
+        <div class="result">
+            <h3>Prediction: <span id="prediction">Waiting for input...</span></h3>
+        </div>
+    </div>
+    <script>
+        document.getElementById('sentiment-form').onsubmit = async function (event) {
+            event.preventDefault();
+            const statement = document.getElementById('statement').value;
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ statement: statement }),
+            });
+            const result = await response.json();
+            document.getElementById('prediction').innerText = result.prediction || result.error;
+        };
+    </script>
+</body>
+</html>
