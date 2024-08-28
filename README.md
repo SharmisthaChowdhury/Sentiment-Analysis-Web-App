@@ -27,6 +27,12 @@ The dataset used in this project is hosted on Kaggle. You can download it from t
 
 After downloading, please place the dataset in the appropriate directory in the project (e.g., `data/`).
 
+## Installation
+
+### Clone the Repository
+`git clone https://github.com/SharmisthaChowdhury/Sentiment-Analysis-Web-App.git`
+
+`cd sentiment-analysis-web-app`
 
 ## Set Up Virtual Environment 
 ### On Windows use 
