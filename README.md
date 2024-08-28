@@ -27,9 +27,29 @@ The dataset used in this project is hosted on Kaggle. You can download it from t
 
 After downloading, please place the dataset in the appropriate directory in the project (e.g., `data/`).
 
-## Installation
 
-### Clone the Repository
-```bash
-git clone <repository-url>
-cd sentiment-analysis-web-app
+## Set Up Virtual Environment 
+### On Windows use 
+`venv\Scripts\activate`
+
+## Install Dependencies
+`pip install -r requirements.txt`
+
+## Run the Flask Application
+`python app.py`
+
+### Open a web browser and navigate to http://127.0.0.1:5000 to use the web application.
+## Usage
+- **Enter text into the input field on the main page.**
+- **Click the submit button to analyze the sentiment.**
+- **View the sentiment analysis results displayed on the page.**
+
+## Contributing
+Contributions are welcome! Please submit a pull request or open an issue for any bugs or enhancements.
+
+
+
+
+
+
+
